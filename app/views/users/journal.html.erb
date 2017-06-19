@@ -1,0 +1,68 @@
+<%= form_tag do %>
+<fieldset>
+	<legend>Please Log in</legend>
+	<div>
+		<%= label_tag :name, 'Author1' %>
+		<%= text_field_tag :Author1, params[:Author1] %>
+		<%= label_tag :name, 'Author2' %>
+		<%= text_field_tag :Author2, params[:Author2] %>
+		<%= label_tag :name, 'Author3' %>
+		<%= text_field_tag :Author3, params[:Author3] %>
+		<%= label_tag :name, 'Author4' %>
+		<%= text_field_tag :Author4, params[:Author4] %>
+		<%= label_tag :name, 'Author5' %>
+		<%= text_field_tag :Author5, params[:Author5] %>
+		<%= label_tag :name, 'Author6' %>
+		<%= text_field_tag :Author6, params[:Author6] %>
+
+		<%= label_tag :title, 'Journal Title' %>
+		<%= text_field_tag :Title, params[:Title] %>
+
+		<%= label_tag :journalname, 'Journal Name' %>
+		<%= text_field_tag :journalname, params[:JournalName] %>
+
+		<%= label_tag :journalname, 'Scopus' %>
+		<%= text_field_tag :JournalName, params[:Scopus] %>
+
+		<%= label_tag :impactfactor, 'Impact Factor' %>
+		<%= text_field_tag :ImpactFactor, params[:ImpactFactor] %>
+
+		<%= label_tag :date, 'Publish Date' %>
+		<%= date_select('range', 'start_date', :order => [:month, :day, :year])%>
+
+		<%= label_tag :issnisbn, 'ISSN/ISBN' %>
+		<%= text_field_tag :ISSNISBN, params[:ISSNISBN] %>
+
+		<%= label_tag :journalname, 'Journal Name' %>
+		<%= text_field_tag :JournalName, params[:JournalName] %>
+
+		<%= label_tag :journalname, 'Department' %>
+		<%= check_box_tag :DepartmentCSE, params[:DepartmentCSE] %> CSE
+		<%= check_box_tag :DepartmentMECH, params[:DepartmentMECH] %> MECH
+		<%= check_box_tag :DepartmentEIE, params[:DepartmentEIE] %> EIE
+		<%= check_box_tag :DepartmentEEE, params[:DepartmentEEE] %> EEE
+		<%= check_box_tag :DepartmentECE, params[:DepartmentECE] %> ECE
+		<%= check_box_tag :DepartmentENG, params[:DepartmentENG] %> ENG
+		<%= check_box_tag :DepartmentOTHERS, params[:DepartmentOTHERS] %> OTHERS
+
+		<%= label_tag :nameofthepublisher, 'Publisher Name' %>
+		<%= text_field_tag :NameOfThePublisher, params[:NameOfThePublisher] %>
+
+		<%= label_tag :volumeissuepagenumber, 'Volume, Issue, PageNumber' %>
+		<%= text_field_tag :VolumeIssuePageNumber, params[:VolumeIssuePageNumber] %>
+
+		<%= label_tag :namebtechmtech, 'Btech/Mtech Involved Name' %>
+		<%= text_field_tag :NameBtechMtech, params[:NameBtechMtech] %>
+
+		<%= label_tag :cost, 'Amount Reimbursed' %>
+		<%= text_field_tag :Cost, params[:Cost] %>
+
+		<%= label_tag :otherdetails, 'Other Details' %>
+		<%= text_field_tag :OtherDetails, params[:OtherDetails] %>
+
+	</div>
+	<div>
+		<%= submit_tag 'journalcreate' %>
+	</div>
+</fieldset>
+<% end %>

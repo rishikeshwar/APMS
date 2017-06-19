@@ -1,0 +1,71 @@
+<div class = "container">
+	<%= form_tag(journalsearch_path, method: :post) do %>
+		Author: <%= text_field_tag :Authors %> <br>
+		CSE: <%= check_box_tag :Department1 %> &nbsp &nbsp &nbsp
+		EEE: <%= check_box_tag :Department2 %> &nbsp &nbsp &nbsp
+		ECE: <%= check_box_tag :Department3 %> &nbsp &nbsp &nbsp
+		EIE: <%= check_box_tag :Department4 %> &nbsp &nbsp &nbsp
+		MECH: <%= check_box_tag :Department5 %> &nbsp &nbsp &nbsp
+		ENG: <%= check_box_tag :Department6 %> &nbsp &nbsp &nbsp
+		OTHERS: <%= check_box_tag :Department7 %> <br>
+
+		Search by Date: <%= check_box_tag :SearchDate %> &nbsp &nbsp &nbsp
+		<%= date_select('range1', 'start_date1', :order => [:month, :day, :year])%> &nbsp &nbsp &nbsp &nbsp
+		<%= date_select('range2', 'start_date2', :order => [:month, :day, :year])%> <br>
+
+		<%= submit_tag 'Search' %>
+	<% end %>
+
+	<div style="overflow-x:scroll;">
+	    <table class="table table-striped table-bordered table-hover .table-responsive">
+    	  <thead class="thead-inverse">
+	        <tr>
+          	<th>Id</th>
+          	<th>Author1</th>
+          	<th>Author2</th>
+          	<th>Author3</th>
+          	<th>Author4</th>
+          	<th>Author5</th>
+          	<th>Author6</th>
+          	<th>Journal Title</th>
+          	<th>Journal Name</th>
+          	<th>Scopus</th>
+          	<th>Impact Factor</th>
+          	<th>Journal Date</th>
+          	<th>ISSN/ISBN</th>
+          	<th>Publisher Name</th>
+          	<th>Volume,Issue,PageNumber</th>
+          	<th>Student Inolved</th>
+          	<th>Amount Reimbursed</th>
+          	<th>Other Details</th>
+	        </tr>
+      	</thead>
+
+      	<tbody>
+	        <% $journals.each do |journal| %>
+          	<tr>
+	            <% if journal.AdminApproval != "NO" %>
+              		<% next %>
+            	<% end %>
+            	<% user = User.find(session[:user_id]) %>
+            	<td><%= journal.id %></td>
+            	<% journal.Author.split('$').each do |author| %>
+              		<td><%= author %></td>
+            	<% end %>
+            	<td><%= journal.Title %></td>
+            	<td><%= journal.JournalName %></td>
+            	<td><%= journal.Scopus %></td>
+            	<td><%= journal.ImpactFactor %></td>
+            	<td><%= journal.JournalDate %></td>
+            	<td><%= journal.ISSNISBN %></td>
+            	<td><%= journal.NameOfThePublisher %></td>
+            	<td><%= journal.VolumeIssuePageNumber %></td>
+            	<td><%= journal.NameBtechMtech %></td>
+            	<td><%= journal.Cost %></td>
+            	<td><%= journal.OtherDetails %></td>
+          	</tr>
+        	<% end %>
+      	</tbody>
+    	</table>
+	</div>
+</div>

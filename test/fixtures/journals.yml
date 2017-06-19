@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  Author: MyString
+  Title: MyString
+  JournalName: MyString
+  Scopus: MyString
+  ImpactFactor: MyString
+  JournalDate: 2017-06-11
+  ISSNISBN: MyString
+  NameOfThePublisher: MyString
+  VolumeIssuePageNumber: MyString
+  NameBtechMtech: MyString
+  Cost: 1
+  OtherDetails: MyString
+  AdminApproval: MyString
+
+two:
+  user_id: 1
+  Author: MyString
+  Title: MyString
+  JournalName: MyString
+  Scopus: MyString
+  ImpactFactor: MyString
+  JournalDate: 2017-06-11
+  ISSNISBN: MyString
+  NameOfThePublisher: MyString
+  VolumeIssuePageNumber: MyString
+  NameBtechMtech: MyString
+  Cost: 1
+  OtherDetails: MyString
+  AdminApproval: MyString

@@ -1,0 +1,19 @@
+<% if flash[:alert] %>
+	<p id="notice"><%= flash[:alert] %></p>
+<% end %>
+<p>coming</p>
+<%= form_tag do %>
+<fieldset>
+	<legend>Please Log in</legend>
+	<div>
+		<%= label_tag :name, 'Name' %>
+		<%= text_field_tag :name, params[:name]%>
+		<%= label_tag :password, 'Password' %>
+		<%= password_field_tag :password, params[:password] %>
+		<%= date_select('range', 'start_date', :order => [:month, :day, :year])%>
+	</div>
+	<div>
+		<%= submit_tag 'login' %>
+	</div>
+</fieldset>
+<% end %>

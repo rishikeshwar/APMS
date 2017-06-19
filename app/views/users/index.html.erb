@@ -1,0 +1,85 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Users</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Destroy</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= link_to 'Show', user %></td>
+          <td><%= link_to 'Edit', edit_user_path(user) %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <div style="overflow-x:scroll;">
+    <table class="table table-striped table-bordered table-hover .table-responsive">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Approval</th>
+          <th>Id</th>
+          <th>Author1</th>
+          <th>Author2</th>
+          <th>Author3</th>
+          <th>Author4</th>
+          <th>Author5</th>
+          <th>Author6</th>
+          <th>Journal Title</th>
+          <th>Journal Name</th>
+          <th>Scopus</th>
+          <th>Impact Factor</th>
+          <th>Journal Date</th>
+          <th>ISSN/ISBN</th>
+          <th>Publisher Name</th>
+          <th>Volume,Issue,PageNumber</th>
+          <th>Student Inolved</th>
+          <th>Amount Reimbursed</th>
+          <th>Other Details</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @journals.each do |journal| %>
+          <tr>
+            <% if journal.AdminApproval != "NO" %>
+              <% next %>
+            <% end %>
+            <% user = User.find(session[:user_id]) %>
+            <td><%= link_to "Approve", user_journal_path(:id => journal.id, :user_id => session[:user_id]), method: :put%></td>
+            <td><%= journal.id %></td>
+            <% journal.Author.split('$').each do |author| %>
+              <td><%= author %></td>
+            <% end %>
+            <td><%= journal.Title %></td>
+            <td><%= journal.JournalName %></td>
+            <td><%= journal.Scopus %></td>
+            <td><%= journal.ImpactFactor %></td>
+            <td><%= journal.JournalDate %></td>
+            <td><%= journal.ISSNISBN %></td>
+            <td><%= journal.NameOfThePublisher %></td>
+            <td><%= journal.VolumeIssuePageNumber %></td>
+            <td><%= journal.NameBtechMtech %></td>
+            <td><%= journal.Cost %></td>
+            <td><%= journal.OtherDetails %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to 'New User', new_user_path %>
+  </div>
+</div>
